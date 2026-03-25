@@ -67,7 +67,8 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  height: 100vh;
+  min-height: 100vh;
+  padding: 80px 0;
   display: flex;
   align-items: center;
   background: linear-gradient(to right, #ffffff, #f3e8ff);
@@ -182,8 +183,7 @@ body {
 }
 /* ===== HERO IMAGE ===== */
 .hero-image {
-  position: sticky;
-  top: 120px;
+  position: relative; /* remove sticky */
   display: flex;
   justify-content: center;
 }
@@ -433,14 +433,13 @@ footer {
   }
 }
 
-/* ================================= */
-/* MOBILE (phones) */
-/* ================================= */
+/* ===== MOBILE FIX (PHONES) ===== */
 @media (max-width: 768px) {
 
+  /* HERO FIX */
   .hero {
     height: auto;
-    padding: 80px 0;
+    padding: 80px 0 40px;
   }
 
   .hero-grid {
@@ -448,23 +447,39 @@ footer {
     text-align: center;
   }
 
+  /* TEXT CENTER */
   .hero-text {
-    display: flex;
-    flex-direction: column;
     align-items: center;
   }
 
-  .buttons {
-    justify-content: center;
+  .hero-text h1 {
+    font-size: 42px;
+    line-height: 1.2;
   }
 
+  .hero-text h3 {
+    font-size: 18px;
+  }
+
+  .desc {
+    margin: 0 auto 20px;
+  }
+
+  /* BUTTONS CENTER */
+  .buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* SOCIALS CENTER */
   .socials {
     justify-content: center;
   }
 
+  /* IMAGE FIX */
   .hero-image {
-    position: static;
-    margin-top: 40px;
+    position: static; /* REMOVE STICKY */
+    margin-top: 30px;
   }
 
   .gradient-circle {
@@ -472,54 +487,53 @@ footer {
     height: 260px;
   }
 
+  /* REMOVE OVERFLOW CUTTING */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* ===== TABLET (768px - 1024px) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* HERO: still 2 columns but balanced */
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 48px;
+  }
+
+  .gradient-circle {
+    width: 320px;
+    height: 320px;
+  }
+
+  /* ABOUT: 2 columns */
   .about-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
   }
 
   .about-img img {
-    width: 80%;
-    margin: auto;
+    width: 90%;
   }
 
-  .nav {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .links {
-    gap: 15px;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ================================= */
-/* TABLET */
-/* ================================= */
-@media (min-width: 769px) and (max-width: 1023px) {
-
-  .hero-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
+  /* PROJECTS: 2 columns */
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-/* ================================= */
-/* DESKTOP */
-/* ================================= */
-@media (min-width: 1024px) {
+  /* FOOTER: 2 columns */
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
+  /* SPACING FIX */
+  .section {
+    padding: 70px 0;
   }
 }
+
